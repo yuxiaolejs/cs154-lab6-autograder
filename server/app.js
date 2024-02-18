@@ -21,7 +21,7 @@ app.all('*', (req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    res.redirect("https://github.com/yuxiaolejs/cs154-lab5-autograder")
+    res.redirect("https://github.com/yuxiaolejs/cs154-lab6-autograder")
 })
 
 app.get('/testcase/1bit', (req, res) => {

@@ -9,7 +9,7 @@ from urllib import request, parse
 
 
 def getTestCases(path, testcases):
-    url = 'http://127.0.0.1:13002'+path
+    url = 'https://cs154-lab6.proxied.tianleyu.com'+path
     data = json.dumps(testcases).encode()
     req = request.Request(url, method='GET')
     response = request.urlopen(req)
@@ -102,4 +102,4 @@ if __name__ == '__main__':
     print("Autograder for CS154 Lab 6 - Version 0.0.7")
     runTest("1bit", 1000)
     runTest("2bit", 1000)
-    runTest("table", 50)
+    runTest("table", 1000)

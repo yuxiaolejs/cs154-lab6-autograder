@@ -3,15 +3,16 @@ Yes, it is an autograder for CS154, lab6.
 
 Notice: This script does not guarantee a 100% coverage, and it does not guarantee that your code is correct. It is only a tool to help you test your code. Please make sure you understand the test cases and the expected results. This script itself may contain bugs, and it may not be able to test all the edge cases. Please use it with caution.
 
+**There might be bugs in this script (since I am not really confident in my own solution). Proceed with caution!!**
+
 Requirement:
 - Python
 - pyrtl
   
-<!-- ## Acknowledgement:
-This script is based on the lab3 autograder by myself, and the test cases are provided by @r0ckwav3 on piazza.(Original repo:
-[https://github.com/r0ckwav3/Public_CS154/blob/main/lab5/bighazard.s](https://github.com/r0ckwav3/Public_CS154/blob/main/lab5/bighazard.s))
+## Acknowledgement:
+This script is based on the lab3 autograder by myself, and @r0ckwav3 contributed to the test cases.
 
-**Thanks a lot Peter!** -->
+**Thanks a lot Peter!**
 
 ## Notice:
 - In order to test your code properly, this script assumes that your `addi` and `sw` are working properly. If you are not sure, please test them first (Your pipeline will be flushed everytime the test instruction tries to write to memory, so no worries!).
@@ -27,7 +28,7 @@ This script is based on the lab3 autograder by myself, and the test cases are pr
 
 ## How to use:
 - Copy `test.py` from this repo to the same directory as your lab5_forward.py
-- Confirm or change the test cases in `test.py`, `myTestCases`. Format is `"test": numberOfTestCases`
+- Confirm or change the test cases in `test.py`, `main`.
 - Run `python3 test.py`
 
 ## Update:
@@ -36,10 +37,10 @@ This script is based on the lab3 autograder by myself, and the test cases are pr
 - 01/30/2024: Add negative numbers to test cases
 - 01/30/2024: Add register file tests
 
-## Special thanks to:
+<!-- ## Special thanks to:
 - @r0ckwav3 - provided static test cases on piazza
 - @r0ckwav3 - suggested to remove requests package to avoid missing dependency
-- @r0ckwav3 - suggested to use register file to test
+- @r0ckwav3 - suggested to use register file to test -->
 
 ## Server deployment instruction:
 **Note:** you don't need to read this part if you just want to use the script.
@@ -54,10 +55,10 @@ This following instructions are only test for ubuntu 22.04, but should work on a
 7. Install dependencies - run `npm install`
 8. Run the server - run `node app.js` (please note that this will run the server in the foreground, it will stop when you close the terminal)
 9. (Optional) Install pm2 - run `npm install pm2 -g` (pm2 is a process manager for nodejs, will allow you to run the server in the background)
-10. (Optional) Run it as a service - run `pm2 start app.js --name lab05_autograder`
+10. (Optional) Run it as a service - run `pm2 start app.js --name lab06_autograder`
 11. (Optional) Install `frp` - This is a NAT proxy, you can find it [here](https://github.com/fatedier/frp). This is only required if you want to expose your server to the internet and you don't have a public IP address.
 12. (Optional) Configure `frp` - This is a little bit tricky, you need to configure it to forward port 13002 to your server's http port. Please refer to the `frp` documentation for more details
-13. (Optional) Regularly update the server - run `git pull` in the `server` directory, then restart the server (if you are using pm2, run `pm2 restart lab05_autograder`)
+13. (Optional) Regularly update the server - run `git pull` in the `server` directory, then restart the server (if you are using pm2, run `pm2 restart lab06_autograder`)
 
 It was long, but it's not that hard, right? Congratulations, you are contributing to the class now!
 If you have any questions, please feel free to ask me on piazza.
