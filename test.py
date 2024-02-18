@@ -16,7 +16,7 @@ def getTestCases(path, testcases):
     return json.loads(response.read())
 
 
-def runTest(ttype='1bit'):
+def runTest(ttype='1bit', length=100):
     pyrtl.reset_working_block()
     
     if (ttype == '1bit'):
@@ -29,7 +29,7 @@ def runTest(ttype='1bit'):
         print("Invalid type")
         exit(1)
 
-    tests = getTestCases('/testcase/'+ttype, {})
+    tests = getTestCases('/testcase/'+ttype+"?length="+str(length), {})
     sim_trace = pyrtl.SimulationTrace()
     sim = pyrtl.Simulation(tracer=sim_trace)
     pcPrevious = 0
@@ -76,26 +76,30 @@ def runTest(ttype='1bit'):
     # one final check
     if isBranchPrevious:
         if predictionPrevious == branchTakenPrevious:
-            correct += 1  # Correct prediction
+            correct += 1 # Correct prediction
+            branches.append(1)
+        else:
+            branches.append(0)
         count += 1
 
     accuracy = correct/count
 
-    if (math.fabs(accuracy - tests['output']['acc']) > 0.001):
+    if (math.fabs(accuracy - tests['output']['acc']) > 0.001 or branches != tests['output']['branches']):
         print("Failed")
         print("Expected: ", tests['output']['acc'])
         print("Got: ", accuracy)
         print("Branches         : ", branches)
         print("Expected Branches: ", tests['output']['branches'])
+        print("TESTCASE:\n", tests['input'])
         exit(1)
     
     print("Passed")
-    print("Branches         : ", branches)
-    print("Expected Branches: ", tests['output']['branches'])
+    # print("Branches         : ", branches)
+    # print("Expected Branches: ", tests['output']['branches'])
 
 
 if __name__ == '__main__':
     print("Autograder for CS154 Lab 6 - Version 0.0.7")
-    runTest("1bit")
-    runTest("2bit")
-    runTest("table")
+    runTest("1bit", 1000)
+    runTest("2bit", 1000)
+    runTest("table", 50)

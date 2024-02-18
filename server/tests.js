@@ -8,11 +8,11 @@ function genTest(length, addrRange = 10) {
         let addr = Math.floor(Math.random() * addrRange) << 2
         addr = "0x" + addr.toString(16).padStart(8, "0")
         if (addrIsBranch[addr] === undefined) {
-            addrIsBranch[addr] = Math.random() > 0.3
+            addrIsBranch[addr] = (Math.random() > 0.3 ? "1" : "0")
         }
         let isBranch = addrIsBranch[addr]
         let isTaken = (isBranch && Math.random() > 0.5)
-        output.push(`${addr}: ${isTaken ? 1 : 0} : ${isBranch ? 1 : 0}`)
+        output.push(`${addr}: ${isTaken ? 1 : 0} : ${isBranch}`)
     }
     return output.join("\n")
 }
@@ -32,7 +32,6 @@ function oneBitTest(test) {
         let predict = predictRegistor[0]
         if (isBranch) {
             count++
-            predictRegistor[0] = isTaken ? 1 : 0
             if (predict === (isTaken ? 1 : 0)) {
                 correct++
                 branches.push(1)
@@ -40,6 +39,7 @@ function oneBitTest(test) {
             else {
                 branches.push(0)
             }
+            predictRegistor[0] = isTaken ? 1 : 0
         }
     }
     return {
