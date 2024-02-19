@@ -22,16 +22,17 @@ This script is based on the lab3 autograder by myself, and @r0ckwav3 contributed
 - If you want to help improve this script, please feel free to fork this repo and make a pull request, things happening on the server side is under the `server` directory.
 
 ## Ways to install:
-1. Download `test.py` from this repo to the same directory as your lab3_cpu.py
+1. Download `test.py` from this repo to the same directory as your ucsbcs154lab6_*.py
 <!-- 2. Copy from csil: `/cs/student/tianleyu/public/test.py`
    1. You can run `cp /cs/student/tianleyu/public/test.py .` in your lab3 directory to get it -->
 
 ## How to use:
-- Copy `test.py` from this repo to the same directory as your lab5_forward.py
+- Copy `test.py` from this repo to the same directory as your ucsbcs154lab6_*.py
 - Confirm or change the test cases in `test.py`, `main`.
 - Run `python3 test.py`
 
 ## Update:
+- 02/11/2024: Changed to lab6 prediction test
 - 02/11/2024: Changed to lab5 forwarding logic test
 - 01/27/2024: Use server to compile test cases. No `spim` or `nodejs` required.
 - 01/30/2024: Add negative numbers to test cases
