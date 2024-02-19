@@ -87,9 +87,9 @@ def runTest(ttype='1bit', length=100):
     if (math.fabs(accuracy - tests['output']['acc']) > 0.001 or branches != tests['output']['branches']):
         print("Failed")
         print("Expected: ", tests['output']['acc'])
-        print("Got: ", accuracy)
-        print("Branches         : ", branches)
-        print("Expected Branches: ", tests['output']['branches'])
+        print("Got     : ", accuracy)
+        print("Predictions      : ", branches)
+        print("Exp. Predictions : ", tests['output']['branches'])
         print("TESTCASE:\n", tests['input'])
         exit(1)
     
